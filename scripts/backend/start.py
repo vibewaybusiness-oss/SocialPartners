@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-clipizy Backend Startup Script
+SocialPartners Backend Startup Script
 """
 import os
 import sys
@@ -43,7 +43,7 @@ def check_database_health():
         from sqlalchemy import create_engine, text
         import time
         
-        database_url = os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@localhost:5632/clipizy")
+        database_url = os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@localhost:5632/socialpartners")
         
         # PostgreSQL health check required
             
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     # Set environment variables
     # Only set default if not already set by the calling script
     if "DATABASE_URL" not in os.environ:
-        os.environ.setdefault("DATABASE_URL", "postgresql://postgres:postgres@localhost:5632/clipizy")
+        os.environ.setdefault("DATABASE_URL", "postgresql://postgres:postgres@localhost:5632/socialpartners")
     os.environ.setdefault("BACKEND_URL", "http://localhost:8200")
     # Set uvicorn configuration for large request bodies
     os.environ.setdefault("UVICORN_LIMIT_MAX_REQUESTS", "1000")
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     print(f"🗄️  Using database URL: {os.environ.get('DATABASE_URL', 'Not set')}")
 
     # Check database health
-    db_url = os.environ.get('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5632/clipizy')
+    db_url = os.environ.get('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5632/socialpartners')
     
     if not check_database_health():
         print("❌ Database connection failed. Please check your database connection.")

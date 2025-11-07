@@ -49,6 +49,8 @@ from .content import export_router, particle_router, visualizer_router
 # )
 from .social import automation_router, social_media_router
 from .storage import backend_storage_router
+from .messaging_router import router as messaging_router
+from .collaborators_router import router as collaborators_router
 
 # Alias for backward compatibility - credits_router already imported above
 
@@ -66,4 +68,6 @@ all_routers = [
     social_media_router,
     automation_router,
     backend_storage_router,
+    messaging_router,
+    collaborators_router,
 ]

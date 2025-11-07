@@ -1,6 +1,6 @@
 """
 Configuration Manager
-Centralized configuration management system for the Clipizy application
+Centralized configuration management system for the SocialPartners application
 Uses services and data layers for storage and database operations
 """
 
@@ -44,7 +44,7 @@ class LogLevel(Enum):
 @dataclass
 class DatabaseConfig:
     """Database configuration"""
-    url: str = "postgresql://postgres:postgres@localhost:5632/clipizy"
+    url: str = "postgresql://postgres:postgres@localhost:5632/socialpartners"
     echo: bool = False
     pool_size: int = 10
     max_overflow: int = 20
@@ -56,7 +56,7 @@ class DatabaseConfig:
 @dataclass
 class StorageConfig:
     """Storage configuration"""
-    s3_bucket: str = "clipizy"
+    s3_bucket: str = "socialpartners-dev"
     s3_endpoint_url: str = "http://localhost:9200"
     s3_access_key: str = "admin"
     s3_secret_key: str = "admin123"
@@ -84,8 +84,7 @@ class APIConfig:
     cors_origins: List[str] = field(default_factory=lambda: [
         "http://localhost:3200",
         "http://localhost:3201",
-        "https://clipizy.com",
-        "https://www.clipizy.com",
+        "http://localhost:3200",
     ])
     max_request_size: int = 100 * 1024 * 1024  # 100MB
     request_timeout: int = 300  # 5 minutes

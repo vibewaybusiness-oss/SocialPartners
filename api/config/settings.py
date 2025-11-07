@@ -1,5 +1,5 @@
 """
-Settings module for Clipizy application
+Settings module for SocialPartners application
 Provides configuration settings from environment variables
 """
 
@@ -11,13 +11,13 @@ class Settings:
     
     def __init__(self):
         # Database settings
-        self.database_url = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5632/clipizy")
+        self.database_url = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5632/socialpartners")
         
         # Frontend settings
         self.frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3200")
         
         # S3 settings
-        self.s3_bucket = os.getenv("S3_BUCKET", "clipizy-dev")
+        self.s3_bucket = os.getenv("S3_BUCKET", "socialpartners-dev")
         self.s3_region = os.getenv("S3_REGION", "us-east-1")
         self.s3_endpoint_url = os.getenv("S3_ENDPOINT_URL", "https://s3.amazonaws.com")
         self.s3_access_key = os.getenv("S3_ACCESS_KEY")

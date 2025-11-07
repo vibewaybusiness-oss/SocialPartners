@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# clipizy Development Environment Stop Script
+# SocialPartners Development Environment Stop Script
 # This script stops all running services and processes related to the project
+# 
+# NOTE: Uses unique container names (socialpartners-*) to avoid conflicts
+# with other projects that may use clipizy-* container names
 
-echo "🛑 Stopping clipizy Development Environment..."
-echo "================================================"
+echo "🛑 Stopping SocialPartners Development Environment..."
+echo "====================================================="
 
 # Colors for output
 RED='\033[0;31m'
@@ -48,10 +51,15 @@ stop_docker_container() {
     fi
 }
 
+# PROJECT-SPECIFIC CONTAINER NAMES - Use unique names to avoid conflicts with other projects
+PROJECT_PREFIX="socialpartners"
+POSTGRES_CONTAINER="${PROJECT_PREFIX}-postgres"
+MINIO_CONTAINER="${PROJECT_PREFIX}-minio"
+
 # Stop Docker containers
 echo -e "${BLUE}🐳 Stopping Docker containers...${NC}"
-stop_docker_container "clipizy-minio" "MinIO"
-stop_docker_container "clipizy-postgres" "PostgreSQL"
+stop_docker_container "${MINIO_CONTAINER}" "MinIO"
+stop_docker_container "${POSTGRES_CONTAINER}" "PostgreSQL"
 
 # Stop all possible frontend ports
 echo -e "${BLUE}⚛️  Stopping Frontend services...${NC}"
@@ -81,12 +89,14 @@ echo -e "${BLUE}🗄️  Stopping PostgreSQL services...${NC}"
 kill_port 5632 "PostgreSQL (default)"
 kill_port 5633 "PostgreSQL (alternative)"
 
-# Kill any remaining Python processes related to the project
+# Kill any remaining Python processes related to SocialPartners project
 echo -e "${BLUE}🐍 Killing remaining Python processes...${NC}"
-pkill -f "python.*scripts/backend/start.py" 2>/dev/null || true
-pkill -f "python.*api.main:app" 2>/dev/null || true
-pkill -f "uvicorn.*api.main:app" 2>/dev/null || true
+# Only kill processes on our specific ports to avoid interfering with clipizy
+# Kill uvicorn processes on our port (8200) - clipizy uses 8000
 pkill -f "uvicorn.*port.*8200" 2>/dev/null || true
+pkill -f "uvicorn.*8200" 2>/dev/null || true
+# Kill our specific start script processes
+pkill -f "python.*scripts/backend/start.py" 2>/dev/null || true
 
 # Kill any remaining Node.js processes related to the project on our port
 echo -e "${BLUE}⚛️  Killing remaining Node.js processes...${NC}"
@@ -94,9 +104,9 @@ pkill -f "next dev.*3200" 2>/dev/null || true
 pkill -f "next dev.*-p 3200" 2>/dev/null || true
 pkill -f "npx.*next dev.*3200" 2>/dev/null || true
 
-# Kill any processes with clipizy in the command line
-echo -e "${BLUE}🔍 Killing any remaining clipizy processes...${NC}"
-pkill -f "clipizy" 2>/dev/null || true
+# Note: We rely on port-based isolation rather than process name matching
+# This ensures we don't accidentally kill clipizy processes
+# Ports are already isolated: SocialPartners uses 3200/8200, clipizy uses 3000/8000
 
 # Clear caches to prevent webpack cache corruption
 echo -e "${BLUE}🧹 Clearing application caches...${NC}"
@@ -138,8 +148,8 @@ done
 
 # Show final status
 echo ""
-echo -e "${GREEN}🎉 All clipizy services stopped!${NC}"
-echo "================================================"
+echo -e "${GREEN}🎉 All SocialPartners services stopped!${NC}"
+echo "====================================================="
 
 # Check if any ports are still in use
 echo -e "${BLUE}📊 Final port status check:${NC}"

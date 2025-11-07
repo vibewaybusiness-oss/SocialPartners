@@ -52,7 +52,7 @@ interface NotificationSettings {
 }
 
 export default function ProfileNotificationsTab() {
-  const { user } = useAuth();
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const { toast } = useToast();
   
   const [profileSettings, setProfileSettings] = useState<ProfileSettings>({
@@ -69,11 +69,15 @@ export default function ProfileNotificationsTab() {
   });
 
   useEffect(() => {
-    loadSettings();
+    if (!authLoading && isAuthenticated && user) {
+      loadSettings();
+    }
 
     // Add beforeunload event to save to database
     const handleBeforeUnload = () => {
-      saveToDatabase();
+      if (isAuthenticated) {
+        saveToDatabase();
+      }
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -81,16 +85,16 @@ export default function ProfileNotificationsTab() {
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [user]); // Only depend on user, not the state variables
+  }, [user, isAuthenticated, authLoading]);
 
   const loadSettings = async () => {
     try {
-      // localStorage removed - backend storage only
+      if (!isAuthenticated || !user) {
+        return;
+      }
 
-      // Load from backend for initial sync
-      const token = localStorage.getItem('access_token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
       if (!token) {
-        console.error('No access token found');
         return;
       }
 
@@ -151,9 +155,12 @@ export default function ProfileNotificationsTab() {
 
   const saveToDatabase = async () => {
     try {
-      const token = localStorage.getItem('access_token');
+      if (!isAuthenticated || !user) {
+        return;
+      }
+
+      const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
       if (!token) {
-        console.error('No access token found');
         return;
       }
 
@@ -207,7 +214,16 @@ export default function ProfileNotificationsTab() {
       const formData = new FormData();
       formData.append('avatar', file);
 
-      const token = localStorage.getItem('access_token');
+      if (!isAuthenticated || !user) {
+        toast({
+          title: "Authentication Error",
+          description: "Please log in again",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
       if (!token) {
         toast({
           title: "Authentication Error",

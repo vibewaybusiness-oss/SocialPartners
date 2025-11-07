@@ -68,7 +68,7 @@ export function useGenericUrlStorageIntegration({
   maxReachedStep,
   onStepChange,
   projectType,
-  basePath = `/dashboard/create/${projectType}`,
+  basePath = `/dashboard`,
   projectData,
   userId,
   authLoading = false,

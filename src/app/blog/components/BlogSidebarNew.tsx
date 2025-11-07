@@ -35,7 +35,7 @@ export function BlogSidebarNew({
                 Start creating your first AI music video in just 5 minutes
               </p>
               <Button asChild className="w-full gap-2">
-                <Link href="/dashboard/create">
+                <Link href="/dashboard">
                   Get Started Free
                   <ArrowRight className="w-4 h-4" />
                 </Link>

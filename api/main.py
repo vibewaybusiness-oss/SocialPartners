@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-clipizy FastAPI Main Application - Sophisticated Router Architecture
+SocialPartners FastAPI Main Application - Sophisticated Router Architecture
 Uses middleware-based authentication and security with organized router management
 """
 
@@ -101,7 +101,7 @@ class LargeBodyMiddleware(BaseHTTPMiddleware):
 async def lifespan(app: FastAPI):
     """Application lifespan manager"""
     # Startup
-    print("🚀 Starting clipizy API with sophisticated architecture...")
+    print("🚀 Starting SocialPartners API with sophisticated architecture...")
 
     # Initialize database tables
     try:
@@ -125,7 +125,7 @@ async def lifespan(app: FastAPI):
 
     yield
     
-    print("🛑 Shutting down clipizy API...")
+    print("🛑 Shutting down SocialPartners API...")
 
 
 def register_all_routers():
@@ -186,8 +186,8 @@ except Exception as e:
 
 # Create FastAPI app with sophisticated configuration
 app = FastAPI(
-    title="Clipizy API - Sophisticated Architecture",
-    description="Advanced music and video generation platform with sophisticated router architecture",
+    title="SocialPartners API - Sophisticated Architecture",
+    description="Social media collaboration and content management platform with sophisticated router architecture",
     version="2.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
@@ -239,7 +239,7 @@ print("✅ All routers included in FastAPI app")
 async def root():
     """Root endpoint with sophisticated architecture information"""
     return {
-        "message": "Clipizy API - Sophisticated Architecture",
+        "message": "SocialPartners API - Sophisticated Architecture",
         "version": "2.0.0",
         "architecture": "sophisticated",
         "features": [

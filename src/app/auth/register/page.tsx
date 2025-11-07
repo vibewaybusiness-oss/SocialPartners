@@ -30,7 +30,7 @@ export default function RegisterPage() {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      router.push("/dashboard/create");
+      router.push("/dashboard");
     }
   }, [isAuthenticated, router]);
 
@@ -72,7 +72,7 @@ export default function RegisterPage() {
     try {
       const result = await signUp(formData.email, formData.password, formData.name);
       if (result.success) {
-        router.push("/dashboard/create");
+        router.push("/dashboard");
       } else {
         setErrors({ general: result.error || "Registration failed. Please try again." });
       }
@@ -96,7 +96,7 @@ export default function RegisterPage() {
     setIsLoading(true);
     const success = await loginWithGoogle();
     if (success) {
-      router.push("/dashboard/create");
+      router.push("/dashboard");
     }
     setIsLoading(false);
   };
@@ -105,7 +105,7 @@ export default function RegisterPage() {
     setIsLoading(true);
     const success = await loginWithGithub();
     if (success) {
-      router.push("/dashboard/create");
+      router.push("/dashboard");
     }
     setIsLoading(false);
   };

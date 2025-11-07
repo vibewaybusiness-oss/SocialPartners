@@ -107,9 +107,9 @@ function OAuthCallbackContent() {
           setStatus('success');
           setMessage('Authentication successful! Redirecting...');
 
-          // Redirect to dashboard/create for new users after a short delay
+          // Redirect to dashboard for new users after a short delay
           setTimeout(() => {
-            router.push('/dashboard/create');
+            router.push('/dashboard');
           }, 2000);
         }
 

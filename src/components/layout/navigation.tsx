@@ -39,8 +39,6 @@ export function Navigation() {
 
   const dashboardNavigation = [
     { name: "Dashboard", href: "/dashboard", icon: Home },
-    { name: "Create", href: "/dashboard/create", icon: Video },
-    { name: "Projects", href: "/dashboard/projects", icon: BarChart3 },
   ];
 
   const adminNavigation = [

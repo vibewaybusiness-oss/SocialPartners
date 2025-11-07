@@ -30,10 +30,10 @@ export default function LoginPage() {
       const urlParams = new URLSearchParams(window.location.search);
       const projectId = urlParams.get('projectId');
       
-      let redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard/create";
+      let redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard";
       
       if (projectId) {
-        redirectPath = `/dashboard/create/music-clip?projectId=${projectId}`;
+        redirectPath = `/dashboard?projectId=${projectId}`;
       }
       
       sessionStorage.removeItem("redirect_after_login");
@@ -76,7 +76,7 @@ export default function LoginPage() {
           title: "Login Successful",
           description: "Welcome back! Redirecting to your dashboard...",
         });
-        const redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard/create";
+        const redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard";
         sessionStorage.removeItem("redirect_after_login");
         router.push(redirectPath);
       } else {
@@ -102,7 +102,7 @@ export default function LoginPage() {
     setIsLoading(true);
     const success = await loginWithGoogle();
     if (success) {
-      const redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard/create";
+      const redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard";
       sessionStorage.removeItem("redirect_after_login");
       router.push(redirectPath);
     }
@@ -113,7 +113,7 @@ export default function LoginPage() {
     setIsLoading(true);
     const success = await loginWithGithub();
     if (success) {
-      const redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard/create";
+      const redirectPath = sessionStorage.getItem("redirect_after_login") || "/dashboard";
       sessionStorage.removeItem("redirect_after_login");
       router.push(redirectPath);
     }

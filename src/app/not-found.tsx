@@ -26,9 +26,9 @@ export default function NotFound() {
               </Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/dashboard/create">
+              <Link href="/dashboard">
                 <Search className="w-4 h-4 mr-2" />
-                Create Video
+                Go to Dashboard
               </Link>
             </Button>
           </div>

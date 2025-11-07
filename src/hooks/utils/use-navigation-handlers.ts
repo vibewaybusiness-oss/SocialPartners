@@ -57,9 +57,9 @@ export function useNavigationHandlers({
         projectState.actions.setCurrentStep(previousStep);
       }
     } else {
-      // Navigate back to dashboard create page
-      console.log('🔄 handleBack: Navigating back to dashboard create page');
-      router.replace('/dashboard/create');
+      // Navigate back to dashboard
+      console.log('🔄 handleBack: Navigating back to dashboard');
+      router.replace('/dashboard');
     }
   }, [router, projectState, projectManagement, projectData, onStepChange]);
 

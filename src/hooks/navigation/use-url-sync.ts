@@ -37,7 +37,7 @@ export interface UrlSyncActions {
 // =========================
 
 const DEFAULT_OPTIONS: UrlSyncOptions = {
-  basePath: '/dashboard/create/music-clip',
+  basePath: '/dashboard',
   stepParam: 'step',
   projectParam: 'projectId',
   preserveOtherParams: true,

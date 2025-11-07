@@ -80,7 +80,7 @@ export function ProjectCard({
       e.stopPropagation();
       onSelect(project.id, !isSelected);
     } else if (!selectionMode) {
-      // Open the project in dashboard/create section
+      // Open the project in dashboard
       onPlay?.(project);
     }
   };

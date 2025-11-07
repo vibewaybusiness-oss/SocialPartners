@@ -79,7 +79,7 @@ class BaseRouter:
             return {
                 "status": "healthy",
                 "router": self.prefix,
-                "service": "clipizy API",
+                "service": "SocialPartners API",
                 "timestamp": datetime.utcnow().isoformat() + "Z"
             }
     

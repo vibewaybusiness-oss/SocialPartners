@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Database initialization script for Clipizy
+Database initialization script for SocialPartners
 Creates tables and default user
 """
 import os
@@ -19,7 +19,7 @@ from api.models import *
 
 def init_database():
     """Initialize the database with tables"""
-    print("🔄 Initializing Clipizy database...")
+    print("🔄 Initializing SocialPartners database...")
     
     try:
         # Create database engine

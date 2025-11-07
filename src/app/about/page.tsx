@@ -115,7 +115,7 @@ export default function About() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button size="lg" className="btn-gradient text-lg px-8 py-4" asChild>
-                <Link href="/dashboard/create">
+                <Link href="/dashboard">
                   <Play className="w-5 h-5 mr-2" />
                   Try clipizy
                 </Link>
@@ -162,7 +162,7 @@ export default function About() {
               </p>
               <div className="flex items-center space-x-4">
                 <Button className="btn-gradient" asChild>
-                  <Link href="/dashboard/create">
+                  <Link href="/dashboard">
                     Start Creating
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
@@ -277,7 +277,7 @@ export default function About() {
                 </div>
               </div>
               <Button className="btn-gradient" asChild>
-                <Link href="/dashboard/create">
+                <Link href="/dashboard">
                   Experience the Technology
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
@@ -314,7 +314,7 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="btn-gradient text-lg px-8 py-4" asChild>
-              <Link href="/dashboard/create">
+              <Link href="/dashboard">
                 <Play className="w-5 h-5 mr-2" />
                 Start Creating
               </Link>

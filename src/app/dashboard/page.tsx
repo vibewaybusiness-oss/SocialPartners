@@ -231,7 +231,7 @@ export default function DashboardPage() {
                                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse"></div>
                                   )}
                                 </div>
-                              </Link>
+                              </div>
                             </div>
                           );
                         })}

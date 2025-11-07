@@ -281,7 +281,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         // Check if we should ignore this error when no tracks are available
         if (!hasTracks && (error.code === MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED || 
                           error.message?.includes('Empty src attribute') ||
-                          audioElement.src?.includes('/dashboard/create/music-clip'))) {
+                          audioElement.src?.includes('/dashboard'))) {
           console.log('Ignoring media error - no tracks available, error code:', error.code);
           return;
         }
@@ -372,7 +372,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
         } else if (audioElement.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
           errorMessage = "No audio source available";
           errorDescription = "The audio source is not available or accessible.";
-        } else if (audioElement.src && audioElement.src.includes('/dashboard/create/music-clip')) {
+        } else if (audioElement.src && audioElement.src.includes('/dashboard')) {
           // IGNORE ERROR WHEN SRC IS POINTING TO THE CURRENT PAGE (NO TRACKS LOADED)
           console.log('Invalid src error detected (pointing to current page), hasTracks:', hasTracks);
           if (!hasTracks) {

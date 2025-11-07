@@ -317,11 +317,10 @@ export function useNavigationManager(
   }, [currentStep, navigateToStep]);
 
   const navigateToDashboard = useCallback(async (): Promise<boolean> => {
-    logger.info('Navigating to dashboard create page');
+    logger.info('Navigating to dashboard');
     
     try {
-      // Navigate to dashboard create page
-      router.push('/dashboard/create');
+      router.push('/dashboard');
       return true;
     } catch (error) {
       logger.error('Failed to navigate to dashboard', { error });

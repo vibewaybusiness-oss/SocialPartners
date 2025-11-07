@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Start Next.js development server
-cd /root/clipizy
+# Get the script directory and navigate to project root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$PROJECT_ROOT"
 
 # Set environment variables to avoid UNC path issues
 export NODE_OPTIONS="--max-old-space-size=4096"
@@ -46,14 +49,33 @@ echo "Starting Next.js development server..."
 NEXTJS_PORT=${PORT:-3200}
 export PORT=$NEXTJS_PORT
 
-# Try different methods to start Next.js, but only use one method
-if command -v npx >/dev/null 2>&1; then
-    echo "Using npx next dev with WSL host binding on port $NEXTJS_PORT..."
-    npx --yes next dev -H 0.0.0.0 -p $NEXTJS_PORT
-elif [ -f "./node_modules/.bin/next" ]; then
-    echo "Using local next binary with WSL host binding on port $NEXTJS_PORT..."
-    ./node_modules/.bin/next dev -H 0.0.0.0 -p $NEXTJS_PORT
-else
-    echo "Using node directly with WSL host binding on port $NEXTJS_PORT..."
-    node ./node_modules/next/dist/bin/next dev -H 0.0.0.0 -p $NEXTJS_PORT
+# Clear cache before starting (commented out to preserve compiled routes)
+# echo "Clearing Next.js cache..."
+# rm -rf .next 2>/dev/null || true
+# rm -rf node_modules/.cache 2>/dev/null || true
+echo "⚠️  Skipping cache clear to preserve compiled routes"
+echo "   To force a fresh build, manually run: rm -rf .next"
+
+# Verify app directory exists
+if [ ! -d "src/app" ]; then
+    echo "ERROR: src/app directory not found!"
+    echo "Next.js requires src/app directory for App Router"
+    exit 1
 fi
+
+# Verify route files are accessible
+if [ ! -f "src/app/page.tsx" ]; then
+    echo "ERROR: src/app/page.tsx not found!"
+    exit 1
+fi
+
+# Use npm run dev which has the port configured in package.json
+echo "Starting Next.js on port $NEXTJS_PORT using npm script..."
+echo ""
+echo "⚠️  IMPORTANT: Routes compile on first access in development mode"
+echo "   First request to any route may take 5-10 seconds to compile"
+echo "   Watch the logs for compilation messages"
+echo ""
+
+# Run npm run dev (app.sh handles background execution with nohup)
+npm run dev

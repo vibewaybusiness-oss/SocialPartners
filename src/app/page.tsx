@@ -226,11 +226,11 @@ export default function Home() {
   };
 
   const handleGenerate = () => {
-    router.push("/dashboard/create");
+    router.push("/dashboard");
   };
 
   const handleUploadTrack = () => {
-    router.push("/dashboard/create");
+    router.push("/dashboard");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -330,7 +330,7 @@ export default function Home() {
             {/* PRIMARY CTA */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 fade-in-up">
               <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-base px-10 py-3 h-auto rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300" asChild>
-                <Link href="/dashboard/create">
+                <Link href="/dashboard">
                   <Play className="w-4 h-4 mr-2" />
                   Start Creating Free
                 </Link>
@@ -474,7 +474,7 @@ export default function Home() {
                     </div>
                   </div>
                   <Button size="sm" variant="outline" asChild>
-                    <Link href="/dashboard/create">
+                    <Link href="/dashboard">
                       <Play className="w-4 h-4 mr-1" />
                       Create Similar
                     </Link>
@@ -568,7 +568,7 @@ export default function Home() {
                     </div>
                   </div>
                   <Button size="sm" variant="outline" asChild>
-                    <Link href="/dashboard/create">
+                    <Link href="/dashboard">
                       <Play className="w-4 h-4 mr-1" />
                       Create Similar
                     </Link>
@@ -662,7 +662,7 @@ export default function Home() {
                     </div>
                   </div>
                   <Button size="sm" variant="outline" asChild>
-                    <Link href="/dashboard/create">
+                    <Link href="/dashboard">
                       <Play className="w-4 h-4 mr-1" />
                       Create Similar
                     </Link>
@@ -683,7 +683,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button size="lg" className="btn-gradient text-base px-6 py-3" asChild>
-                  <Link href="/dashboard/create">
+                  <Link href="/dashboard">
                     <Play className="w-4 h-4 mr-2" />
                     Start Creating Now
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -927,7 +927,7 @@ export default function Home() {
                     className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-lg px-8 py-4 h-auto rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
                     asChild
                   >
-                    <Link href="/dashboard/create">
+                    <Link href="/dashboard">
                       <Zap className="w-5 h-5 mr-2" />
                       Start Automation Setup
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -1045,7 +1045,7 @@ export default function Home() {
                     size="lg"
                     asChild
                   >
-                    <Link href="/dashboard/create">
+                    <Link href="/dashboard">
                       {plan.cta}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -1111,7 +1111,7 @@ export default function Home() {
                 className="h-14 px-8 text-lg font-semibold bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
                 asChild
               >
-                <Link href="/dashboard/create">
+                <Link href="/dashboard">
                   <Play className="w-6 h-6 mr-3" />
                   Start Creating Now
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -1336,7 +1336,7 @@ export default function Home() {
                       </Link>
                     </Button>
                     <Button asChild>
-                      <Link href="/dashboard/create">
+                      <Link href="/dashboard">
                         <Play className="w-4 h-4 mr-2" />
                         Start Creating
                       </Link>

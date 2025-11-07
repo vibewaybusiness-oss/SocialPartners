@@ -125,7 +125,7 @@ const integration = useUrlStorageIntegration({
   maxReachedStep: 3,
   onStepChange: setCurrentStep,
   projectType: 'video-edit',
-  basePath: '/dashboard/create/video-edit',
+  basePath: '/dashboard',
   projectData: videoProjectData,
   userId: user?.id
 });

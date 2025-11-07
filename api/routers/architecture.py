@@ -317,6 +317,26 @@ class RouterArchitecture:
             description="Workflow management and execution",
         )
         
+        # MESSAGING ROUTERS
+        self.routers["messaging"] = RouterConfig(
+            name="messaging",
+            category=RouterCategory.BUSINESS,
+            priority=RouterPriority.MEDIUM,
+            prefix="/api/messaging",
+            tags=["Messaging"],
+            description="Messaging and conversation functionality",
+        )
+        
+        # COLLABORATORS ROUTERS
+        self.routers["collaborators"] = RouterConfig(
+            name="collaborators",
+            category=RouterCategory.BUSINESS,
+            priority=RouterPriority.MEDIUM,
+            prefix="/api/collaborators",
+            tags=["Collaborators"],
+            description="Collaborator discovery and connection",
+        )
+        
         # job_events router removed - using event-driven approach instead
     
     def get_router_config(self, name: str) -> Optional[RouterConfig]:

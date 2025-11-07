@@ -40,7 +40,7 @@ export function useProjectNavigation(options: ProjectNavigationOptions) {
     source: 'useProjectNavigation' 
   });
 
-  const { dashboardPath = '/dashboard/create', onBackToDashboard } = options;
+  const { dashboardPath = '/dashboard', onBackToDashboard } = options;
 
   // =========================
   // UNIFIED NAVIGATION

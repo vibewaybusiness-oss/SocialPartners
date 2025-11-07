@@ -287,7 +287,7 @@ export function useGenericProjectManagement({
       if (project?.status === 'processing') {
         console.log('🔄 Project is in processing state, redirecting to overview...');
         // Use window.location to ensure a full page redirect
-        window.location.href = `/dashboard/create/generation-overview?projectId=${projectId}`;
+        window.location.href = `/dashboard?projectId=${projectId}`;
         return null;
       }
       

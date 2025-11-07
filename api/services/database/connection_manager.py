@@ -349,7 +349,7 @@ class DatabaseConfigFactory:
         """Get production connection arguments"""
         return {
             "connect_timeout": 10,
-            "application_name": "clipizy_production",
+            "application_name": "socialpartners_production",
             "options": "-c default_transaction_isolation=read committed",
         }
     
@@ -358,7 +358,7 @@ class DatabaseConfigFactory:
         """Get development connection arguments"""
         return {
             "connect_timeout": 10,
-            "application_name": "clipizy_development",
+            "application_name": "socialpartners_development",
         }
     
     @staticmethod
@@ -366,7 +366,7 @@ class DatabaseConfigFactory:
         """Get testing connection arguments"""
         return {
             "connect_timeout": 5,
-            "application_name": "clipizy_testing",
+            "application_name": "socialpartners_testing",
         }
 
 

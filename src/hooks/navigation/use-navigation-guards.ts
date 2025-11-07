@@ -62,7 +62,7 @@ export const PROJECT_STATE_GUARDS: NavigationGuard[] = [
       return false;
     },
     message: 'Your project is currently being processed. Please wait for completion.',
-    redirectTo: '/dashboard/create/generation-overview'
+    redirectTo: '/dashboard'
   },
   {
     id: 'project-completed',
@@ -75,7 +75,7 @@ export const PROJECT_STATE_GUARDS: NavigationGuard[] = [
       return false;
     },
     message: 'Your project has been completed.',
-    redirectTo: '/dashboard/create/generation-overview'
+    redirectTo: '/dashboard'
   },
   {
     id: 'project-failed',
